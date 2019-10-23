@@ -1,14 +1,13 @@
 FROM node
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    python3.5 \
-    python3-pip \
-    && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+#RUN apt-get update && apt-get install -y --no-install-recommends \
+#    python3.5 \
+#    python3-pip \
+#    && \
+#    apt-get clean && \
+#    rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install requests
-#RUN pip3 install med2image
+#RUN pip3 install requests
 
 # Create app directory
 WORKDIR /usr/src/app
