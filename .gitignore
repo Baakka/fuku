@@ -1,3 +1,5 @@
+# VIM swp 
+*.swp
 # Logs
 logs
 *.log
