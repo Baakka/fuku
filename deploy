@@ -1,6 +1,23 @@
-docker tag fukuexpress fukuexpressold
-docker rmi fukuexpress
-docker build -t fukuexpress . 
-docker run -p 80:3000 -d fukuexpress
-docker ps | grep fukuexpressold | awk '{print $1}' | xargs docker kill 
-docker images | grep fukuexpressold | awk '{print $3}' | xargs -I% docker rmi % -f
+#docker tag fukuexpress fukuexpressold
+#docker rmi fukuexpress
+#docker build -t fukuexpress . 
+#docker run -d fukuexpress
+#docker ps | grep fukuexpressold | awk '{print $1}' | xargs docker kill 
+#docker images | grep fukuexpressold | awk '{print $3}' | xargs -I% docker rmi % -f
+
+
+docker build -t new_fuku .
+docker run -d new_fuku
+
+if [[ `docker ps | grep fukuexpress` ]]; then
+#	docker ps | grep fukuexpress | awk '{print $1}' | xargs docker kill
+	docker kill `docker ps -q --filter ancestor=fukuexpress`	
+fi
+
+if [[ `docker images | grep fukuexpress` ]]; then
+	docker images | grep fukuexpress | awk '{print $3}' | xargs -I% docker rmi % -f
+fi
+
+docker tag new_fuku fukuexpress
+docker rmi new_fuku
+
