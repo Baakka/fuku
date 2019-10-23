@@ -1,6 +1,6 @@
-docker tag fukuexpress fukuexpress_
+docker tag fukuexpress fukuexpressold
 docker rmi fukuexpress
 docker build -t fukuexpress . 
 docker run -p 80:3000 -d fukuexpress
-docker ps | grep fukuexpress_ | awk '{print $1}' | xargs docker kill 
-docker images | grep fukuexpress_ | awk '{print $3}' | xargs -I% docker rmi % -f
+docker ps | grep fukuexpressold | awk '{print $1}' | xargs docker kill 
+docker images | grep fukuexpressold | awk '{print $3}' | xargs -I% docker rmi % -f
